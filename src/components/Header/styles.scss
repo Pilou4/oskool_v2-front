@@ -1,0 +1,14 @@
+@use 'src/styles/vars';
+
+.header {
+  text-align: center;
+  padding: vars.$gutter;
+  background-color: vars.$color-primary;
+  border-bottom: 1px solid vars.$color-primary;
+  &__link {
+    padding: 0 vars.$gutter / 2;
+    &:hover, &--active {
+      color: blue;
+    }
+  }
+}

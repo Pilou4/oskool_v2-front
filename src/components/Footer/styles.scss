@@ -1,0 +1,13 @@
+@use 'src/styles/vars';
+
+.footer {
+  text-align: center;
+  padding: vars.$gutter / 2;
+  background-color: vars.$color-primary;
+  &__link {
+    padding: 0 vars.$gutter / 2;
+    &:hover , &--active{
+      color: blue;
+    }
+  }
+}

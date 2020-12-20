@@ -1,0 +1,19 @@
+@use 'src/styles/vars';
+
+.LegalMentions{
+  padding: vars.$gutter;
+  &__article{
+      padding: vars.$gutter / 2;
+  }
+  &__title {
+      text-align: center;
+      font-size: 2em;
+      font-weight: bold;
+  }
+  &__subtitle {
+    padding: vars.$gutter / 2.5 0;
+    color: rgb(58,102,177);
+    font-size: 1.3em;
+    font-weight: bold;
+  }
+}
