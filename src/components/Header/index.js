@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
 import './styles.scss';
 
-const Header = () => (
+const Header = ({ isLogged }) => (
   <nav className="header">
     <NavLink
       key="/"
@@ -14,6 +15,7 @@ const Header = () => (
     >
       Oskool
     </NavLink>
+    {!isLogged && (
     <NavLink
       key="/login"
       to="/login"
@@ -23,6 +25,18 @@ const Header = () => (
     >
       se connecter
     </NavLink>
+    )}
+    {isLogged && (
+    <NavLink
+      key="/logout"
+      to="/logout"
+      activeClassName="header__link--active"
+      className="header__link"
+      exact
+    >
+      se deconneter
+    </NavLink>
+    )}
     <NavLink
       key="/subscrible"
       to="/subscrible"
@@ -43,5 +57,13 @@ const Header = () => (
     </NavLink>
   </nav>
 );
+
+Header.propTypes = {
+  isLogged: PropTypes.bool,
+};
+
+Header.defaultProps = {
+  isLogged: false,
+};
 
 export default Header;
