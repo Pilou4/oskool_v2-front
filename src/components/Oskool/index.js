@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import Header from 'src/components/Header';
 import Home from 'src/components/Home';
 import Footer from 'src/components/Footer';
+import Login from 'src/components/Login';
 import LegalMentions from 'src/components/LegalMentions';
 import NotFound from '../NotFound';
 
@@ -16,7 +17,7 @@ const Oskool = () => (
         <Home />
       </Route>
       <Route path="/login" exact>
-        <div>login</div>
+        <Login />
       </Route>
       <Route path="/subscrible" exact>
         <div>subscrible</div>
