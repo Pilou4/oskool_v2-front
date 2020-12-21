@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Login from 'src/components/Login';
-import { changeValue } from '../../actions/auth';
+import { changeValue, login } from '../../actions/auth';
 
 const mapStateToProps = (state) => ({
   email: state.auth.email,
@@ -13,6 +13,11 @@ const mapDispatchToProps = (dispatch) => ({
     const action = changeValue(value, name);
     dispatch(action);
   },
+  handleLogin: () => {
+    const action = login();
+    dispatch(action);
+  },
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

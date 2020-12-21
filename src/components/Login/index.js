@@ -9,14 +9,14 @@ const Login = ({
   email,
   password,
   changeField,
-  handlelogin,
-  handlelogout,
+  handleLogin,
+  handleLogout,
   isLogged,
   loggedMessage,
 }) => {
-  const handleOnSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    handlelogin();
+    handleLogin();
   };
 
   return (
@@ -27,7 +27,7 @@ const Login = ({
       )} */}
 
       {/* {!isLogged && ( */}
-        <form className="login__form" onSubmit={handleOnSubmit}>
+        <form className="login__form" onSubmit={handleSubmit}>
           <Field
             name="email"
             type="email"
@@ -66,7 +66,6 @@ Login.propTypes = {
 
 Login.defaultProps = {
   isLogged: false,
-  loggedMessage: 'Connecté',
 };
 
 export default Login;
