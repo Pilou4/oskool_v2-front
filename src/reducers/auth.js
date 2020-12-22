@@ -4,6 +4,10 @@ export const initialState = {
   email: '',
   password: '',
   isLogged: false,
+  user: {
+    id: '',
+    roles: '',
+  },
 };
 
 const auth = (state = initialState, action = {}) => {
