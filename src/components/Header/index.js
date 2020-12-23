@@ -24,6 +24,15 @@ const Header = () => (
       se connecter
     </NavLink>
     <NavLink
+      key="/logout"
+      to="/logout"
+      activeClassName="header__link--active"
+      className="header__link"
+      exact
+    >
+      se déconnecter
+    </NavLink>
+    <NavLink
       key="/subscrible"
       to="/subscrible"
       activeClassName="header__link--active"

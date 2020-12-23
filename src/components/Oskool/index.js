@@ -19,6 +19,9 @@ const Oskool = () => (
       <Route path="/login" exact>
         <Login />
       </Route>
+      <Route path="/logout" exact>
+        <div>logout</div>
+      </Route>
       <Route path="/subscrible" exact>
         <div>subscrible</div>
       </Route>

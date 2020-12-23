@@ -25,6 +25,20 @@ const Login = ({
       {/* {isLogged && (
       <Redirect exact to="/profil" />
       )} */}
+      {isLogged && (
+        <div className="login-form-logged">
+          <p className="login-form-message">
+            {loggedMessage}
+          </p>
+          <button
+            type="button"
+            className="login__submit"
+            onClick={handleLogout}
+          >
+            Déconnexion
+          </button>
+        </div>
+      )}
 
       {/* {!isLogged && ( */}
         <form className="login__form" onSubmit={handleSubmit}>
@@ -66,6 +80,7 @@ Login.propTypes = {
 
 Login.defaultProps = {
   isLogged: false,
+  loggedMessage: 'Connecté',
 };
 
 export default Login;

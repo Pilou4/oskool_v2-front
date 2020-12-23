@@ -1,4 +1,4 @@
-import { CHANGE_VALUE } from 'src/actions/auth';
+import { CHANGE_VALUE, SAVE_USER, LOGOUT } from 'src/actions/auth';
 
 export const initialState = {
   email: '',
@@ -16,6 +16,22 @@ const auth = (state = initialState, action = {}) => {
       return {
         ...state,
         [action.name]: action.value,
+      };
+    case SAVE_USER:
+      return {
+        ...state,
+        email: '',
+        password: '',
+        isLogged: true,
+        user: {
+          id: action.id,
+          roles: action.roles,
+        },
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        isLogged: false,
       };
 
     default:

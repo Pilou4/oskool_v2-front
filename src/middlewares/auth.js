@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LOGIN, saveUser } from 'src/actions/auth';
+import { LOGIN, saveUser, LOGOUT } from 'src/actions/auth';
 
 const auth = (store) => (next) => (action) => {
   switch (action.type) {
@@ -19,14 +19,16 @@ const auth = (store) => (next) => (action) => {
         }).then((response) => {
           const usersData = response.data['hydra:member'];
           const dataUser = usersData.find((userData) => (userData.email === state.auth.email));
-          console.log(dataUser);
           const action = saveUser(dataUser.id, dataUser.roles);
           store.dispatch(action);
-          console.log('action', action);
         });
       }).catch((error) => console.log(error));
       break;
     }
+    case LOGOUT:
+      localStorage.removeItem('token');
+      next(action);
+      break;
     default:
       next(action);
   }
