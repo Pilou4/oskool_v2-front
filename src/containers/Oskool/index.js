@@ -7,7 +7,6 @@ const mapStateToProps = (state) => ({});
 const mapDispatchToProps = (dispatch) => ({
   checkIsLogged: () => {
     const action = checkIsLogged();
-    console.log('je veux vérifier si l\'utilisateur est déjà connecté : ');
     dispatch(action);
   },
 });
