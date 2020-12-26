@@ -15,9 +15,14 @@ const Field = ({
   };
   return (
     <div className="field">
+      <label
+        className="field__label" 
+      >
+        {placeholder}
+      </label>
       <input
         // base infos
-        className="field__input-text"
+        className="field__input"
         id={name}
         name={name}
         type={type}

@@ -2,6 +2,7 @@ export const CHANGE_VALUE = 'CHANGE_VALUE';
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const SAVE_USER = 'SAVE_USER';
+export const CHECK_IS_LOGGED = 'CHECK_IS_LOGGED';
 
 export const changeValue = (value, name) => ({
   type: CHANGE_VALUE,
@@ -21,4 +22,7 @@ export const saveUser = (id, roles) => ({
   type: SAVE_USER,
   id,
   roles,
+});
+export const checkIsLogged = () => ({
+  type: CHECK_IS_LOGGED,
 });

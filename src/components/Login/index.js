@@ -21,13 +21,12 @@ const Login = ({
 
   return (
     <div className="login">
-      <h2 className="login__title">Se connecter</h2>
-      {/* {isLogged && (
-      <Redirect exact to="/profil" />
-      )} */}
       {isLogged && (
-        <div className="login-form-logged">
-          <p className="login-form-message">
+      <Redirect exact to="/profil" />
+      )}
+      {isLogged && (
+        <div className="login__logged">
+          <p className="login__message">
             {loggedMessage}
           </p>
           <button
@@ -40,7 +39,7 @@ const Login = ({
         </div>
       )}
 
-      {/* {!isLogged && ( */}
+      {!isLogged && (
         <form className="login__form" onSubmit={handleSubmit}>
           <Field
             name="email"
@@ -63,7 +62,7 @@ const Login = ({
             envoyer
           </button>
         </form>
-      {/* )} */}
+      )}
     </div>
   );
 };

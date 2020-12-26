@@ -1,8 +1,12 @@
 @use 'src/styles/vars';
 
 .header {
+  // font-size: 1.2em;
+  display: flex;
+  justify-content: space-between;
   text-align: center;
-  padding: vars.$gutter;
+  align-items: center;
+  padding: vars.$gutter / 2;
   background-color: vars.$color-primary;
   border-bottom: 1px solid vars.$color-primary;
   &__link {

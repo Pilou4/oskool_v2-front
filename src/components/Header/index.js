@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-
+import Login from 'src/containers/Login';
 import './styles.scss';
 
 const Header = () => (
@@ -15,24 +15,6 @@ const Header = () => (
       Oskool
     </NavLink>
     <NavLink
-      key="/login"
-      to="/login"
-      activeClassName="header__link--active"
-      className="header__link"
-      exact
-    >
-      se connecter
-    </NavLink>
-    <NavLink
-      key="/logout"
-      to="/logout"
-      activeClassName="header__link--active"
-      className="header__link"
-      exact
-    >
-      se déconnecter
-    </NavLink>
-    <NavLink
       key="/subscrible"
       to="/subscrible"
       activeClassName="header__link--active"
@@ -41,7 +23,8 @@ const Header = () => (
     >
       s'inscrire
     </NavLink>
-    <NavLink
+    <Login />
+    {/* <NavLink
       key="/profil"
       to="/profil"
       activeClassName="header__link--active"
@@ -49,7 +32,7 @@ const Header = () => (
       exact
     >
       profil
-    </NavLink>
+    </NavLink> */}
   </nav>
 );
 

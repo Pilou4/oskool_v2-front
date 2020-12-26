@@ -7,7 +7,7 @@ import store from 'src/store';
 
 // == Import : local
 // Composants
-import Oskool from 'src/components/Oskool';
+import Oskool from 'src/containers/Oskool';
 
 // == Render
 // 1. Élément React racine (celui qui contient l'ensemble de l'app)
