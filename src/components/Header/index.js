@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Login from 'src/containers/Login';
 import './styles.scss';
+import oskool from 'src/assets/img/Logo.webp';
 
 const Header = () => (
   <nav className="header">
@@ -12,7 +13,7 @@ const Header = () => (
       className="header__link"
       exact
     >
-      Oskool
+      <img src={oskool} alt="logo" className="header__logo"></img>
     </NavLink>
     <NavLink
       key="/subscrible"

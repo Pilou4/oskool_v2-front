@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import Header from 'src/components/Header';
 import Home from 'src/components/Home';
 import Footer from 'src/components/Footer';
+import Subscrible from 'src/components/Subscrible';
 import ParentProfil from 'src/containers/ProfilParent';
 import PropTypes from 'prop-types';
 import LegalMentions from 'src/components/LegalMentions';
@@ -20,7 +21,7 @@ const Oskool = ({ checkIsLogged }) => {
           <Home />
         </Route>
         <Route path="/subscrible" exact>
-          <div>subscrible</div>
+          <Subscrible />
         </Route>
         <Route path="/profil" exact>
           <ParentProfil />

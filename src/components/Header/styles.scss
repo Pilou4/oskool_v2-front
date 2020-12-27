@@ -9,6 +9,9 @@
   padding: vars.$gutter / 2;
   background-color: vars.$color-primary;
   border-bottom: 1px solid vars.$color-primary;
+  &__logo {
+    width: 150px;
+  }
   &__link {
     padding: 0 vars.$gutter / 2;
     &:hover, &--active {
