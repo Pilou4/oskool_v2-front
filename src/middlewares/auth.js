@@ -4,6 +4,7 @@ import {
   saveUser,
   LOGOUT,
   CHECK_IS_LOGGED,
+  fetchProfilParent,
 } from 'src/actions/auth';
 
 const auth = (store) => (next) => (action) => {
@@ -23,10 +24,10 @@ const auth = (store) => (next) => (action) => {
         }).then((response) => {
           const usersData = response.data['hydra:member'];
           const dataUser = usersData.find((userData) => (userData.email === state.auth.email));
-
+          console.log(dataUser.parent);
           sessionStorage.setItem('id', dataUser.id);
-          const action = saveUser(dataUser.id, dataUser.roles);
-          store.dispatch(action);
+          store.dispatch(saveUser(dataUser.id, dataUser.roles));
+          store.dispatch(fetchProfilParent(dataUser.parent));
         });
       }).catch((error) => console.log(error));
       break;

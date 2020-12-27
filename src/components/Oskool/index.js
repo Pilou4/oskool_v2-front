@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import Header from 'src/components/Header';
 import Home from 'src/components/Home';
 import Footer from 'src/components/Footer';
-import ParentProfil from 'src/components/ParentProfil';
+import ParentProfil from 'src/containers/ProfilParent';
 import PropTypes from 'prop-types';
 import LegalMentions from 'src/components/LegalMentions';
 import NotFound from '../NotFound';
