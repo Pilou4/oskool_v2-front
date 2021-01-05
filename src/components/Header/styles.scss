@@ -1,6 +1,7 @@
 @use 'src/styles/vars';
 
 .header {
+  width: auto;
   // font-size: 1.2em;
   display: flex;
   justify-content: space-between;
@@ -18,4 +19,12 @@
       color: blue;
     }
   }
+}
+
+.logout__submit {
+  border: none;
+  background-color: rgb(115, 149, 252);
+  padding: vars.$gutter / 4;
+  border-radius: 5px;
+  color: white;
 }

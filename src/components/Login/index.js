@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Field from './Field';
-import { Redirect, Link } from 'react-router-dom';
+import Field from 'src/components/Field';
+import { Redirect } from 'react-router-dom';
 
 import './styles.scss';
 
@@ -10,9 +10,7 @@ const Login = ({
   password,
   changeField,
   handleLogin,
-  handleLogout,
   isLogged,
-  loggedMessage,
 }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -24,22 +22,6 @@ const Login = ({
       {isLogged && (
       <Redirect exact to="/profil" />
       )}
-      {isLogged && (
-        <div className="login__logged">
-          <p className="login__message">
-            {loggedMessage}
-          </p>
-          <button
-            type="button"
-            className="login__submit"
-            onClick={handleLogout}
-          >
-            Déconnexion
-          </button>
-        </div>
-      )}
-
-      {!isLogged && (
         <form className="login__form" onSubmit={handleSubmit}>
           <Field
             name="email"
@@ -62,7 +44,6 @@ const Login = ({
             envoyer
           </button>
         </form>
-      )}
     </div>
   );
 };
@@ -72,14 +53,7 @@ Login.propTypes = {
   password: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,
-  handleLogout: PropTypes.func.isRequired,
-  isLogged: PropTypes.bool,
-  loggedMessage: PropTypes.string,
-};
-
-Login.defaultProps = {
-  isLogged: false,
-  loggedMessage: 'Connecté',
+  isLogged: PropTypes.bool.isRequired,
 };
 
 export default Login;
