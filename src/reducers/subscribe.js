@@ -5,6 +5,7 @@ export const initialState = {
   password: '',
   verifyPassword: '',
   response: '',
+  success: false,
 };
 
 const subscribe = (state = initialState, action = {}) => {
@@ -21,6 +22,7 @@ const subscribe = (state = initialState, action = {}) => {
         password: '',
         verifyPassword: '',
         response: action.value,
+        success: true,
       };
     default:
       return state;

@@ -14,6 +14,7 @@ const Subscribe = ({
   handleChange,
   submitRegister,
   response,
+  success,
 }) => {
   const handleOnChange = (event) => {
     const value = event.target.value;
@@ -51,7 +52,7 @@ const Subscribe = ({
   };
   const toastFailOrSuccess = () => {
     const message = 'L\'inscription à réussi, veuillez vérifier vos mails';
-    toastNotification(message);
+    toastNotification(response, message);
   };
 
   useEffect(() => {
@@ -101,6 +102,7 @@ const Subscribe = ({
           >
             S'inscrire
           </button>
+          {success && (<Redirect exact to="login" />)}
         </div>
       </form>
     </main>
@@ -113,6 +115,7 @@ Subscribe.propTypes = {
   handleChange: PropTypes.func.isRequired,
   submitRegister: PropTypes.func.isRequired,
   response: PropTypes.string.isRequired,
+  success: PropTypes.bool.isRequired,
 };
 
 export default Subscribe;

@@ -1,9 +1,11 @@
 import axios from 'axios';
+import Cookies from 'js-cookie';
 import {
   LOGIN,
   saveUser,
   LOGOUT,
   CHECK_IS_LOGGED,
+  checkIsLoggedParent,
   fetchProfilParent,
 } from 'src/actions/auth';
 
@@ -17,37 +19,38 @@ const auth = (store) => (next) => (action) => {
         password: state.auth.password,
       }, { 'Content-Type': 'application/json' },
       { withCredentials: true }).then((response) => {
-        sessionStorage.setItem('token', response.data.token);
+        // sessionStorage.setItem('token', response.data.token);
+        Cookies.set('token', response.data.token);
 
         axios.get(`${ROOT_URL}/users`, {
-          headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}`},
+          headers: { 'Authorization': `Bearer ${Cookies.get('token')}`},
         }).then((response) => {
           const usersData = response.data['hydra:member'];
           const dataUser = usersData.find((userData) => (userData.email === state.auth.email));
-          console.log(dataUser.parent);
-          sessionStorage.setItem('id', dataUser.id);
+          const id = Cookies.set('id', dataUser.id);
+          if (dataUser.parent != null) {
+            store.dispatch(checkIsLoggedParent(id));
+            store.dispatch(fetchProfilParent(dataUser));
+          }
           store.dispatch(saveUser(dataUser.id, dataUser.roles));
-          store.dispatch(fetchProfilParent(dataUser.parent));
         });
       }).catch((error) => console.log(error));
       break;
     }
     case CHECK_IS_LOGGED: {
-      const id = sessionStorage.getItem('id');
-      const token = sessionStorage.getItem('token');
+      const id = Cookies.get('id');
+      const token = Cookies.get('token');
       if (token || !token === '') {
         axios.get(`${ROOT_URL}/users/${id}`, {
-          headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` },
+          headers: { 'Authorization': `Bearer ${token}` },
         }, {}, { withCredentials: true }).then((response) => {
         }).catch((error) => console.log(error));
-        const action = saveUser(id);
-        store.dispatch(action);
       }
       break;
     }
     case LOGOUT:
-      sessionStorage.removeItem('token');
-      sessionStorage.removeItem('id');
+      Cookies.remove('token');
+      Cookies.remove('id');
       next(action);
       break;
     default:

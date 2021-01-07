@@ -1,9 +1,17 @@
-import { CHANGE_VALUE, SAVE_USER, LOGOUT } from 'src/actions/auth';
+import {
+  CHANGE_VALUE,
+  SAVE_USER,
+  LOGOUT,
+  CHECK_IS_LOGGED,
+  CHECK_IS_LOGGED_PARENT,
+} from 'src/actions/auth';
 
 export const initialState = {
   email: '',
   password: '',
   isLogged: false,
+  isTeacher: false,
+  isParent: false,
   user: {
     id: '',
     roles: '',
@@ -28,9 +36,25 @@ const auth = (state = initialState, action = {}) => {
           roles: action.roles,
         },
       };
+    case CHECK_IS_LOGGED:
+      return {
+        ...state,
+      };
+    case CHECK_IS_LOGGED_PARENT:
+      return {
+        ...state,
+        isParent: true,
+        isTeacher: false,
+        isLogged: true,
+        id: action.id,
+      };
     case LOGOUT:
       return {
         ...state,
+        email: '',
+        password: '',
+        isTeacher: false,
+        isParent: false,
         isLogged: false,
       };
 

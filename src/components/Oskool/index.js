@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Header from 'src/containers/Header';
 import Home from 'src/components/Home';
@@ -6,6 +6,7 @@ import Footer from 'src/components/Footer';
 import Login from 'src/containers/Login';
 import Subscribe from 'src/containers/Subscribe';
 import ParentProfil from 'src/containers/ProfilParent';
+import FormParent from 'src/containers/FormParent';
 import PropTypes from 'prop-types';
 import LegalMentions from 'src/components/LegalMentions';
 import NotFound from '../NotFound';
@@ -13,7 +14,10 @@ import NotFound from '../NotFound';
 // import './styles';
 
 const Oskool = ({ checkIsLogged }) => {
-  checkIsLogged();
+  useEffect(() => {
+    // on vérifie si l'utilisateur est déjà loggué ou pas
+    checkIsLogged();
+  }, []);
   return (
     <div className="oskool">
       <Header />
@@ -26,6 +30,9 @@ const Oskool = ({ checkIsLogged }) => {
         </Route>
         <Route path="/subscribe" exact>
           <Subscribe />
+        </Route>
+        <Route path="/formParent" exact>
+          <FormParent />
         </Route>
         <Route path="/profil" exact>
           <ParentProfil />

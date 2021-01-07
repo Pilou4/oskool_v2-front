@@ -16,34 +16,33 @@ const Login = ({
     event.preventDefault();
     handleLogin();
   };
-
   return (
     <div className="login">
       {isLogged && (
       <Redirect exact to="/profil" />
       )}
-        <form className="login__form" onSubmit={handleSubmit}>
-          <Field
-            name="email"
-            type="email"
-            placeholder="email"
-            onChange={changeField}
-            value={email}
-          />
-          <Field
-            name="password"
-            type="password"
-            placeholder="password"
-            onChange={changeField}
-            value={password}
-          />
-          <button
-            type="submit"
-            className="login__submit"
-          >
-            envoyer
-          </button>
-        </form>
+      <form className="login__form" onSubmit={handleSubmit}>
+        <Field
+          name="email"
+          type="email"
+          placeholder="email"
+          onChange={changeField}
+          value={email}
+        />
+        <Field
+          name="password"
+          type="password"
+          placeholder="password"
+          onChange={changeField}
+          value={password}
+        />
+        <button
+          type="submit"
+          className="login__submit"
+        >
+          se connecter
+        </button>
+      </form>
     </div>
   );
 };
@@ -53,7 +52,10 @@ Login.propTypes = {
   password: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,
-  isLogged: PropTypes.bool.isRequired,
+  isLogged: PropTypes.bool,
 };
 
+Login.defaultProps = {
+  isLogged: false,
+};
 export default Login;

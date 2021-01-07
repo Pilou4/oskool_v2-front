@@ -7,6 +7,7 @@ const mapStateToProps = (state) => ({
   password: state.subscribe.password,
   verifyPassword: state.subscribe.verifyPassword,
   response: state.subscribe.response,
+  success: state.subscribe.success,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -8,6 +8,7 @@ export const initialState = {
   zipcode: '',
   city: '',
   phone: '',
+  roles: '',
 };
 
 const profilParent = (state = initialState, action = {}) => {
@@ -22,6 +23,7 @@ const profilParent = (state = initialState, action = {}) => {
         zipcode: action.zipcode,
         city: action.city,
         phone: action.phone,
+        roles: action.roles,
       };
 
     default:

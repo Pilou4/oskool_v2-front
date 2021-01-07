@@ -4,7 +4,13 @@ import { NavLink, Redirect } from 'react-router-dom';
 import './styles.scss';
 import oskool from 'src/assets/img/Logo.webp';
 
-const Header = ({ isLogged, handleLogout }) => (
+const Header = ({
+  isLogged,
+  handleLogout,
+  success,
+  isTeacher,
+  isParent,
+}) => (
   <nav className="header">
     <NavLink
       key="/"
@@ -13,9 +19,9 @@ const Header = ({ isLogged, handleLogout }) => (
       className="header__link"
       exact
     >
-      <img src={oskool} alt="logo" className="header__logo"></img>
+  <img src={oskool} alt="logo" className="header__logo"></img>
     </NavLink>
-    {!isLogged && (
+    {(!isLogged && !success) && (
       <NavLink
         key="/subscribe"
         to="/subscribe"
@@ -24,6 +30,39 @@ const Header = ({ isLogged, handleLogout }) => (
         exact
       >
         s'inscrire
+      </NavLink>
+    )}
+    {(isLogged && isParent) && (
+      <NavLink
+        key="/profil"
+        to="/profil"
+        activeClassName="header__link--active"
+        className="header__link"
+        exact
+      >
+        profil
+      </NavLink>
+    )}
+    {(isLogged && isParent) && (
+      <NavLink
+        key="/formStudent"
+        to="/formStudent"
+        activeClassName="header__link--active"
+        className="header__link"
+        exact
+      >
+        ajouter un enfant
+      </NavLink>
+    )}
+    {(isLogged && !isParent) && (
+      <NavLink
+        key="/formParent"
+        to="/formParent"
+        activeClassName="header__link--active"
+        className="header__link"
+        exact
+      >
+        ajouter profil
       </NavLink>
     )}
     {isLogged && (
@@ -52,8 +91,19 @@ const Header = ({ isLogged, handleLogout }) => (
   </nav>
 );
 
+
 Header.propTypes = {
-  isLogged: PropTypes.bool.isRequired,
   handleLogout: PropTypes.func.isRequired,
+  success: PropTypes.bool.isRequired,
+  isParent: PropTypes.bool,
+  isTeacher: PropTypes.bool,
+  isLogged: PropTypes.bool,
 };
+
+Header.defaultProps = {
+  isLogged: false,
+  isTeacher: false,
+  isParent: false,
+};
+
 export default Header;

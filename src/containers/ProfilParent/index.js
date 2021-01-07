@@ -9,6 +9,8 @@ const mapStateToProps = (state) => ({
   zipcode: state.profilParent.zipcode,
   city: state.profilParent.city,
   phone: state.profilParent.phone,
+  email: state.profilParent.email,
+  roles: state.profilParent.roles,
 });
 
 const mapDispatchToProps = (dispatch) => ({});

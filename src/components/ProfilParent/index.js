@@ -15,21 +15,21 @@ const ProfilParent = ({
   handleDeconnexion,
   isLogged,
 }) => (
-    <div className="profil">
-       <article className="parentProfil__info">
-        <h2>Parent</h2>
-        <p><strong>Nom:</strong> <span>{lastname}</span></p>
-        <p><strong>Prenom:</strong> <span>{firstname}</span></p>
-        <p><strong>Email:</strong> <span>email</span></p>
-        <p><strong>Adresse:</strong> <span>{adress}</span></p>
-        <p><strong>Code postal:</strong> <span>{zipcode}</span></p>
-        <p><strong>Ville:</strong> <span>{city}</span></p>
-        <Link to='/parentForm'>
-          <label htmlFor="profilParent">
-            {/* <img src={edit_profil} alt="editer profil" /> */}
-          </label>
-        </Link>
-      </article>
+  <div className="profil">
+    <article className="parentProfil__info">
+      <h2>Parent</h2>
+      <p><strong>Nom:</strong> <span>{lastname}</span></p>
+      <p><strong>Prenom:</strong> <span>{firstname}</span></p>
+      <p><strong>Email:</strong> <span>{email}</span></p>
+      <p><strong>Adresse:</strong> <span>{adress}</span></p>
+      <p><strong>Code postal:</strong> <span>{zipcode}</span></p>
+      <p><strong>Ville:</strong> <span>{city}</span></p>
+      <Link to='/parentForm'>
+        <label htmlFor="profilParent">
+          {/* <img src={edit_profil} alt="editer profil" /> */}
+        </label>
+      </Link>
+    </article>
   </div>
 );
 
@@ -41,7 +41,11 @@ ProfilParent.propTypes = {
   city: PropTypes.string.isRequired,
   zipcode: PropTypes.any.isRequired,
   children: PropTypes.array.isRequired,
-  isLogged: PropTypes.bool.isRequired,
+  isLogged: PropTypes.bool,
+};
+
+ProfilParent.defaultProps = {
+  isLogged: false,
 };
 
 export default ProfilParent;
