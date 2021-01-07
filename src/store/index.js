@@ -4,7 +4,13 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import auth from 'src/middlewares/auth';
 import subscribe from '../middlewares/subscribe';
 import formParent from 'src/middlewares/formParent';
+import formChildren from '../middlewares/formChildren';
 
-const store = createStore(reducer, composeWithDevTools(applyMiddleware(auth, subscribe, formParent)));
+const store = createStore(reducer, composeWithDevTools(applyMiddleware(
+  auth,
+  subscribe,
+  formParent,
+  formChildren,
+)));
 
 export default store;

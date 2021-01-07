@@ -45,8 +45,8 @@ const Header = ({
     )}
     {(isLogged && isParent) && (
       <NavLink
-        key="/formStudent"
-        to="/formStudent"
+        key="/FormChildren"
+        to="/FormChildren"
         activeClassName="header__link--active"
         className="header__link"
         exact

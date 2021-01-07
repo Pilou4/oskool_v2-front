@@ -3,6 +3,7 @@ import auth from './auth';
 import profilParent from './profilParent';
 import subscribe from './subscribe';
 import formParent from './formParent';
+import formChildren from './formChildren';
 
 // combineReducer permet d'aggréger plusieurs sous-reducers
 // en un reducer global : on parle de rootReducer
@@ -11,4 +12,5 @@ export default combineReducers({
   profilParent,
   subscribe,
   formParent,
+  formChildren,
 });
