@@ -11,6 +11,7 @@ const mapStateToProps = (state) => ({
   phone: state.profilParent.phone,
   email: state.profilParent.email,
   roles: state.profilParent.roles,
+  isLogged: state.auth.isLogged,
 });
 
 const mapDispatchToProps = (dispatch) => ({});

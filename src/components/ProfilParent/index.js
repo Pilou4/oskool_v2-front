@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { Link, Redirect } from 'react-router-dom';
+import editProfil from '../../assets/img/edit_profil.png';
+import add from '../../assets/img/add_profil.png';
 import './styles.scss';
 
 const ProfilParent = ({
@@ -12,11 +13,11 @@ const ProfilParent = ({
   zipcode,
   city,
   children,
-  handleDeconnexion,
   isLogged,
 }) => (
   <div className="profil">
-    <article className="parentProfil__info">
+    {!isLogged && (<Redirect to="/" />)}
+    <article className="profil__parent__info">
       <h2>Parent</h2>
       <p><strong>Nom:</strong> <span>{lastname}</span></p>
       <p><strong>Prenom:</strong> <span>{firstname}</span></p>
@@ -24,12 +25,40 @@ const ProfilParent = ({
       <p><strong>Adresse:</strong> <span>{adress}</span></p>
       <p><strong>Code postal:</strong> <span>{zipcode}</span></p>
       <p><strong>Ville:</strong> <span>{city}</span></p>
-      <Link to='/parentForm'>
-        <label htmlFor="profilParent">
-          {/* <img src={edit_profil} alt="editer profil" /> */}
-        </label>
+      <label>
+      <Link to="/formParent">
+          <img src={editProfil} alt="editer profil" />
       </Link>
+      </label>
     </article>
+
+    <div className="profil__children">
+      <Link
+        to="/formChildren"
+        className="profil__children__link"
+      >
+        <img
+          src={add}
+          alt="addChildren"
+          className="profil__children__link__img"
+        />
+        <div className="profil__children__link__subtitle">
+          <h2>Ajouter un enfant</h2>
+        </div>
+      </Link>
+        <article className="profil__children__info">
+          <h2>Enfant</h2>
+          <p><strong>Prénom:</strong> <span>Prénom</span></p>
+          <p><strong>Nom:</strong> <span>Nom</span></p>
+          <p><strong>Santé:</strong> <span>Santé</span></p>
+          <p><strong>Loisirs:</strong> <span>Loisirs</span></p>
+          <label>
+            <Link to="/formParent">
+              <img src={editProfil} alt="editer profil" />
+            </Link>
+          </label>
+        </article>
+    </div>
   </div>
 );
 
