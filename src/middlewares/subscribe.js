@@ -17,8 +17,7 @@ const subscribe = (store) => (next) => (action) => {
       })
         .then(response => {
           console.log(response.data);
-          console.log('state middleware 1');
-          store.dispatch(subscribeSaveUser(state.subscribe.id, state.subscribe.email, state.subscribe.password));
+          store.dispatch(subscribeSaveUser(state.subscribe.email, state.subscribe.password));
           // store.dispatch(saveRegisterResponse('Success'));
         })
         .catch((error) => {

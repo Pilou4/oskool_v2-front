@@ -13,9 +13,8 @@ export const subscribeSubmit = () => ({
   type: SUBSCRIBE_SUBMIT,
 });
 
-export const subscribeSaveUser = (id, email, password) => ({
+export const subscribeSaveUser = (email, password) => ({
   type: SUBSCRIBE_SAVE_USER,
-  id,
   email,
   password,
 });

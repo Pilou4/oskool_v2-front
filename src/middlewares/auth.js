@@ -28,29 +28,32 @@ const auth = (store) => (next) => (action) => {
           headers: { 'Authorization': `Bearer ${Cookies.get('token')}`},
         }).then((response) => {
           const usersData = response.data['hydra:member'];
+          console.log(usersData);
           const dataUser = usersData.find((userData) => (userData.email === state.auth.email));
+          console.log(dataUser);
           const id = Cookies.set('id', dataUser.id);
-          const students = dataUser.parent.students.find((children) => children);
-          console.log(dataUser.parent);
+          // const students = dataUser.parent.students.find((children) => children);
+          // console.log(dataUser.parent.students);
           if (dataUser.parent != null) {
             store.dispatch(checkIsLoggedParent(id));
             store.dispatch(fetchProfilParent(dataUser));
-            // store.dispatch(fetchProfilChildren(students));
+            const children = dataUser.parent.students;
+            store.dispatch(fetchProfilChildren(children));
           }
-          store.dispatch(saveUser(dataUser.id, dataUser.roles));
+          store.dispatch(saveUser());
         });
       }).catch((error) => console.log(error));
       break;
     }
     case CHECK_IS_LOGGED: {
-      const id = Cookies.get('id');
-      const token = Cookies.get('token');
-      if (token || !token === '') {
-        axios.get(`${ROOT_URL}/users/${id}`, {
-          headers: { 'Authorization': `Bearer ${token}` },
-        }, {}, { withCredentials: true }).then((response) => {
-        }).catch((error) => console.log(error));
-      }
+      // const id = Cookies.get('id');
+      // const token = Cookies.get('token');
+      // if (token || !token === '') {
+      //   axios.get(`${ROOT_URL}/users/${id}`, {
+      //     headers: { 'Authorization': `Bearer ${token}` },
+      //   }, {}, { withCredentials: true }).then((response) => {
+      //   }).catch((error) => console.log(error));
+      // }
       break;
     }
     case LOGOUT:

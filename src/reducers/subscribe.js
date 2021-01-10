@@ -1,6 +1,7 @@
 import { CHANGE_VALUE, SUBSCRIBE_SAVE_USER } from 'src/actions/subscribe';
 
 export const initialState = {
+  id: '',
   email: '',
   password: '',
   verifyPassword: '',
@@ -18,6 +19,7 @@ const subscribe = (state = initialState, action = {}) => {
     case SUBSCRIBE_SAVE_USER:
       return {
         ...state,
+        id: action.id,
         email: '',
         password: '',
         verifyPassword: '',

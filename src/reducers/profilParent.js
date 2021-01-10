@@ -1,4 +1,4 @@
-import { FETCH_PROFIL_PARENT } from 'src/actions/auth';
+import { FETCH_PROFIL_PARENT, FETCH_PROFIL_CHILDREN } from 'src/actions/auth';
 
 export const initialState = {
   id: '',
@@ -9,6 +9,19 @@ export const initialState = {
   zipcode: '',
   city: '',
   phone: '',
+  children: [
+    {
+      id: '',
+      firstName: '',
+      lastName: '',
+      age: '',
+      birthday: '',
+      level: '',
+      health: '',
+      hobbies: '',
+      imageRight: '',
+    },
+  ],
 };
 
 const profilParent = (state = initialState, action = {}) => {
@@ -24,8 +37,13 @@ const profilParent = (state = initialState, action = {}) => {
         zipcode: action.zipcode,
         city: action.city,
         phone: action.phone,
+        children: action.children,
       };
-
+    case FETCH_PROFIL_CHILDREN:
+      return {
+        ...state,
+        children: action.children,
+      };
     default:
       return state;
   }

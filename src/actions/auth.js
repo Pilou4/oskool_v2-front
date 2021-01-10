@@ -38,17 +38,12 @@ export const fetchProfilParent = (dataUser) => ({
   city: dataUser.parent.city,
   phone: dataUser.parent.phone,
   email: dataUser.email,
+  children: dataUser.parent.students,
 });
 
-export const fetchProfilChildren = (students) => ({
+export const fetchProfilChildren = (children) => ({
   type: FETCH_PROFIL_CHILDREN,
-  firstname: students.firstname,
-  lastname: students.lastname,
-  age: students.age,
-  birthday: students.birthday,
-  health: students.health,
-  hobbies: students.hobbies,
-  level: students.level,
+  children,
 });
 
 export const checkIsLoggedParent = (id) => ({
