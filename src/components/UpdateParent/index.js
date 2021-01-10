@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Input from 'src/components/Input';
-import { Redirect } from 'react-router-dom';
 
 import './styles.scss';
 
-const FormParent = ({
+const UpdateParent = ({
   firstname,
   lastname,
   phone,
@@ -18,7 +17,6 @@ const FormParent = ({
   const handleSubmit = (event) => {
     event.preventDefault();
     registerParent();
-      <Redirect to="/profil" />
   };
   return (
     <div className="parent">
@@ -83,7 +81,7 @@ const FormParent = ({
   );
 };
 
-FormParent.propTypes = {
+UpdateParent.propTypes = {
   firstname: PropTypes.string.isRequired,
   lastname: PropTypes.string.isRequired,
   phone: PropTypes.number.isRequired,
@@ -97,4 +95,4 @@ FormParent.propTypes = {
 // FormParent.defaultProps = {
 //   isLogged: false,
 // };
-export default FormParent;
+export default UpdateParent;

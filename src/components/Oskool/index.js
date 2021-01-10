@@ -7,6 +7,7 @@ import Login from 'src/containers/Login';
 import Subscribe from 'src/containers/Subscribe';
 import ParentProfil from 'src/containers/ProfilParent';
 import FormParent from 'src/containers/FormParent';
+import UpdateParent from 'src/components/UpdateParent';
 import FormChildren from 'src/containers/FormChildren';
 import PropTypes from 'prop-types';
 import LegalMentions from 'src/components/LegalMentions';
@@ -34,6 +35,9 @@ const Oskool = ({ checkIsLogged }) => {
         </Route>
         <Route path="/formParent" exact>
           <FormParent />
+        </Route>
+        <Route path="/updateParent" exact>
+          <UpdateParent />
         </Route>
         <Route path="/formChildren" exact>
           <FormChildren />

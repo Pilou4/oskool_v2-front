@@ -1,6 +1,5 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import { Children } from 'react';
 import {
   LOGIN,
   saveUser,
@@ -9,6 +8,7 @@ import {
   checkIsLoggedParent,
   fetchProfilParent,
   fetchProfilChildren,
+  changeValue,
 } from 'src/actions/auth';
 
 const auth = (store) => (next) => (action) => {
@@ -42,18 +42,18 @@ const auth = (store) => (next) => (action) => {
           }
           store.dispatch(saveUser());
         });
-      }).catch((error) => console.log(error));
+      }).catch((error) => store.dispatch(changeValue('Error', 'response')));
       break;
     }
     case CHECK_IS_LOGGED: {
-      // const id = Cookies.get('id');
-      // const token = Cookies.get('token');
-      // if (token || !token === '') {
-      //   axios.get(`${ROOT_URL}/users/${id}`, {
-      //     headers: { 'Authorization': `Bearer ${token}` },
-      //   }, {}, { withCredentials: true }).then((response) => {
-      //   }).catch((error) => console.log(error));
-      // }
+      const id = Cookies.get('id');
+      const token = Cookies.get('token');
+      if (token || !token === '') {
+        axios.get(`${ROOT_URL}/users/${id}`, {
+          headers: { 'Authorization': `Bearer ${token}` },
+        }, {}, { withCredentials: true }).then((response) => {
+        }).catch((error) => console.log(error));
+      }
       break;
     }
     case LOGOUT:

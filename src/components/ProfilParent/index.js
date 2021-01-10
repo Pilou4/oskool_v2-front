@@ -28,7 +28,7 @@ const ProfilParent = ({
       <p><strong>Code postal:</strong> <span>{zipcode}</span></p>
       <p><strong>Ville:</strong> <span>{city}</span></p>
       <label>
-        <Link to="/formParent">
+        <Link to="/updateParent">
           <img src={editProfil} alt="editer profil" />
         </Link>
       </label>

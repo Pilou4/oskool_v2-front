@@ -9,6 +9,7 @@ import {
 export const initialState = {
   email: '',
   password: '',
+  response: '',
   isLogged: false,
   isTeacher: false,
   isParent: false,
