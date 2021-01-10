@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { Children } from 'react';
 import {
   LOGIN,
   saveUser,
@@ -7,6 +8,7 @@ import {
   CHECK_IS_LOGGED,
   checkIsLoggedParent,
   fetchProfilParent,
+  fetchProfilChildren,
 } from 'src/actions/auth';
 
 const auth = (store) => (next) => (action) => {
@@ -28,9 +30,12 @@ const auth = (store) => (next) => (action) => {
           const usersData = response.data['hydra:member'];
           const dataUser = usersData.find((userData) => (userData.email === state.auth.email));
           const id = Cookies.set('id', dataUser.id);
+          const students = dataUser.parent.students.find((children) => children);
+          console.log(dataUser.parent);
           if (dataUser.parent != null) {
             store.dispatch(checkIsLoggedParent(id));
             store.dispatch(fetchProfilParent(dataUser));
+            // store.dispatch(fetchProfilChildren(students));
           }
           store.dispatch(saveUser(dataUser.id, dataUser.roles));
         });

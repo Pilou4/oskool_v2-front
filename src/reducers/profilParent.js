@@ -1,6 +1,7 @@
 import { FETCH_PROFIL_PARENT } from 'src/actions/auth';
 
 export const initialState = {
+  id: '',
   email: '',
   firstname: '',
   lastname: '',
@@ -8,7 +9,6 @@ export const initialState = {
   zipcode: '',
   city: '',
   phone: '',
-  roles: '',
 };
 
 const profilParent = (state = initialState, action = {}) => {
@@ -17,13 +17,13 @@ const profilParent = (state = initialState, action = {}) => {
       return {
         ...state,
         email: action.email,
+        id: action.id,
         firstname: action.firstname,
         lastname: action.lastname,
         adress: action.adress,
         zipcode: action.zipcode,
         city: action.city,
         phone: action.phone,
-        roles: action.roles,
       };
 
     default:
