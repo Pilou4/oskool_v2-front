@@ -32,7 +32,7 @@ const Header = ({
         s'inscrire
       </NavLink>
     )}
-    {(isLogged && isParent) && (
+    {(isLogged) && (
       <NavLink
         key="/profil"
         to="/profil"
@@ -41,28 +41,6 @@ const Header = ({
         exact
       >
         profil
-      </NavLink>
-    )}
-    {(isLogged && isParent) && (
-      <NavLink
-        key="/FormChildren"
-        to="/FormChildren"
-        activeClassName="header__link--active"
-        className="header__link"
-        exact
-      >
-        ajouter un enfant
-      </NavLink>
-    )}
-    {(isLogged && !isParent) && (
-      <NavLink
-        key="/formParent"
-        to="/formParent"
-        activeClassName="header__link--active"
-        className="header__link"
-        exact
-      >
-        ajouter profil
       </NavLink>
     )}
     {isLogged && (

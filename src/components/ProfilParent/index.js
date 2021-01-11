@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import ProfilChildren from 'src/containers/ProfilChildren';
 import editProfil from '../../assets/img/edit_profil.png';
+import add from '../../assets/img/add_profil.png';
+
 import './styles.scss';
 
 const ProfilParent = ({
@@ -16,14 +18,30 @@ const ProfilParent = ({
   city,
   isLogged,
   children,
+  isParent,
 }) => (
   <div className="profil">
     {!isLogged && (<Redirect to="/" />)}
+    {!isParent && (
+      <Link
+        to="/formParent"
+        className="profil__parent__link"
+      >
+        <img
+          src={add}
+          alt="addChildren"
+          className="profil__parent__link__img"
+        />
+        <div className="profil__parent__link__subtitle">
+          <h2>Créer profil</h2>
+        </div>
+      </Link>
+    )}
     <article className="profil__parent__info">
-      <h2>Parent</h2>
+      <h2>Mon profil</h2>
+      <p><strong>Email:</strong> <span>{email}</span></p>
       <p><strong>Nom:</strong> <span>{lastname}</span></p>
       <p><strong>Prenom:</strong> <span>{firstname}</span></p>
-      <p><strong>Email:</strong> <span>{email}</span></p>
       <p><strong>Adresse:</strong> <span>{adress}</span></p>
       <p><strong>Code postal:</strong> <span>{zipcode}</span></p>
       <p><strong>Ville:</strong> <span>{city}</span></p>
@@ -52,10 +70,12 @@ ProfilParent.propTypes = {
   city: PropTypes.string.isRequired,
   zipcode: PropTypes.any.isRequired,
   isLogged: PropTypes.bool,
+  isParent: PropTypes.bool,
 };
 
 ProfilParent.defaultProps = {
   isLogged: false,
+  isParent: false,
 };
 
 export default ProfilParent;

@@ -7,7 +7,7 @@ const formChildren = (store) => (next) => (action) => {
   const ROOT_URL = 'http://localhost:8000/api';
   const state = store.getState();
   const token = Cookies.get('token');
-  const age = parseInt(state.formParent.age, 0);
+  const age = parseInt(state.parent.age, 0);
   console.log(state.formChildren.birthday);
 
   switch (action.type) {

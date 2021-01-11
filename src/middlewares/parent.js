@@ -1,23 +1,23 @@
 import axios from 'axios';
-import { RESGISTER_PARENT, saveProfilParent } from 'src/actions/formParent';
+import { RESGISTER_PARENT, saveProfilParent } from 'src/actions/parent';
 import Cookies from 'js-cookie';
 
-const formParent = (store) => (next) => (action) => {
+const parent = (store) => (next) => (action) => {
   const ROOT_URL = 'http://localhost:8000/api';
   const state = store.getState();
   const token = Cookies.get('token');
-  const phone = parseInt(state.formParent.phone, 0);
-  const zipcode = parseInt(state.formParent.zipcode, 0);
+  const phone = parseInt(state.parent.phone, 0);
+  const zipcode = parseInt(state.parent.zipcode, 0);
 
   switch (action.type) {
     case RESGISTER_PARENT: {
       axios.post(`${ROOT_URL}/parents`, {
-        firstname: state.formParent.firstname,
-        lastname: state.formParent.lastname,
+        firstname: state.parent.firstname,
+        lastname: state.parent.lastname,
         phone,
-        adress: state.formParent.adress,
+        adress: state.parent.adress,
         zipcode,
-        city: state.formParent.city,
+        city: state.parent.city,
       }, {
         headers: { 'Authorization': `Bearer ${token}` },
       })
@@ -25,12 +25,12 @@ const formParent = (store) => (next) => (action) => {
           console.log('middelware');
           console.log(response);
           store.dispatch(saveProfilParent(
-            state.formParent.firstname,
-            state.formParent.lastname,
+            state.parent.firstname,
+            state.parent.lastname,
             phone,
-            state.formParent.adress,
+            state.parent.adress,
             zipcode,
-            state.formParentcity,
+            state.parent.city,
           ));
         })
         .error((error) => {
@@ -44,4 +44,4 @@ const formParent = (store) => (next) => (action) => {
   }
 };
 
-export default formParent;
+export default parent;

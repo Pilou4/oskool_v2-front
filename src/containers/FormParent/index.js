@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
-import { changeValue, registerParent } from 'src/actions/formParent';
+import { changeValue, registerParent } from 'src/actions/parent';
 import FormParent from '../../components/FormParent';
 
 const mapStateToProps = (state) => ({
-  firstname: state.formParent.firstname,
-  lastname: state.formParent.lastname,
-  phone: state.formParent.phone,
-  adress: state.formParent.adress,
-  zipcode: state.formParent.zipcode,
-  city: state.formParent.city,
+  firstname: state.parent.firstname,
+  lastname: state.parent.lastname,
+  phone: state.parent.phone,
+  adress: state.parent.adress,
+  zipcode: state.parent.zipcode,
+  city: state.parent.city,
 });
 
 const mapDispatchToProps = (dispatch) => ({
