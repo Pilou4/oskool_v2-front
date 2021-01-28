@@ -81,12 +81,6 @@ const Subscribe = ({
           name="password"
           onChange={handleOnChange}
         />
-        <div className="password__span">
-          <span>
-            Le mot de passe doit contenir au minimum 8 caractères,
-            une majuscule et un chiffre
-          </span>
-        </div>
         <input
           type="password"
           value={verifyPassword}
@@ -95,6 +89,12 @@ const Subscribe = ({
           name="verifyPassword"
           onChange={handleOnChange}
         />
+        <div className="password__span">
+          <span>
+            Le mot de passe doit contenir au minimum 8 caractères,
+            une majuscule et un chiffre
+          </span>
+        </div>
         <div className="subscribe__form--submit">
           <button
             type="submit"

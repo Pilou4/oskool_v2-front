@@ -60,7 +60,7 @@ const Header = ({
         className="header__link"
         exact
       >
-        se connecter
+        connexion
       </NavLink>
     )}
     {!isLogged && (
@@ -68,7 +68,6 @@ const Header = ({
     )}
   </nav>
 );
-
 
 Header.propTypes = {
   handleLogout: PropTypes.func.isRequired,

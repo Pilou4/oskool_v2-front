@@ -18,7 +18,7 @@ const Footer = () => (
       key="/plan-du-site"
       to="/plan-du-site"
       activeClassName="footer__link--active"
-      className="header__link"
+      className="footer__link"
       exact
     >
       Plan du site

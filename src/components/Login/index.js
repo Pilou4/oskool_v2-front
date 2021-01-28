@@ -48,6 +48,7 @@ const Login = ({
       {isLogged && (
       <Redirect exact to="/profil" />
       )}
+      <h2 className="login__title">Se connecter</h2>
       <form className="login__form" onSubmit={handleSubmit}>
         <Field
           name="email"

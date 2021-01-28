@@ -1,6 +1,10 @@
 @use 'src/styles/vars';
 
 .footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.5em;
   text-align: center;
   padding: vars.$gutter / 2;
   background-color: vars.$color-primary;
@@ -8,6 +12,26 @@
     padding: 0 vars.$gutter / 2;
     &:hover , &--active{
       color: blue;
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .footer {
+    flex-direction: column;
+    font-size: 1.3em;
+    &__link {
+      margin: 5px;
+      text-align: left;
+    }
+  }
+}
+@media screen and (max-width: 400px) {
+  .footer {
+    font-size: 1em;
+    &__link {
+      margin: 5px;
+      text-align: left;
     }
   }
 }
